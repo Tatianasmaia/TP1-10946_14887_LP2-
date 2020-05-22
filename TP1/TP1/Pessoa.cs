@@ -1,8 +1,17 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿/*
+ * Trabalho Prático - Linguagem de Programação II
+ * 
+ * Realizado por: Joana Jesus (nrº 10946) e Tatiana Maia (nrº 14887)
+ * 
+ * 
+ * Este trabalho tem como objetivo gerir pessoas infetadas numa situação de crise de saúde pública. 
+ * Deste modo, o sistema irá permitir inserir novos casos, editar e remover casos já existentes, assim como a consulta dos mesmos através dos vários tipos de informação do utente.
+ * 
+ */
+
+
+
+using System;
 
 namespace TP1
 {
@@ -10,23 +19,28 @@ namespace TP1
     /// <summary>
     /// Descrição do que é uma pessoa
     /// </summary>
+    [Serializable]
     public class Pessoa
     {
         //Atributos da classe
         #region Estado
 
-        int idade, nif, numP;
+        public  int idade, nif;
         string nome, regiao, sexo;
         DateTime dataN;
-        static int totalP = 0;
+        [NonSerialized]
+        bool infetado;
 
+        //Esta variável é estática para preservar o seu valor. Fazendo com que seja possível contar o total de pessoas iseridas
+        static int totalP = 0; 
+        //numP ?
         #endregion
 
 
         #region Construtor
         //Métodos usados na criação de novos objectos
         /// <summary>
-        /// Construtor com valores por defeito
+        /// Construtor com valores por defeito/omissão
         /// Executado quando fizer new Pessoa
         /// </summary>
         public Pessoa()
@@ -38,7 +52,7 @@ namespace TP1
             regiao = "";
             sexo = "";
             dataN = DateTime.Today;
-            numP = totalP;
+            infetado = true;
         }
 
         /// <summary>
@@ -51,8 +65,6 @@ namespace TP1
         /// <param name="i">Idade da Pessoa</param>
         /// <param nif="ni">Nif da Pessoa</param>
         /// <param dataN="d">Data de nascimento da Pessoa</param>
-
-
         public Pessoa(string n, string r, string s, int i, int ni, DateTime d)
         {
             totalP++;
@@ -62,7 +74,7 @@ namespace TP1
             idade = i;
             nif = ni;
             dataN = d;
-            numP = totalP;
+            infetado = true;
         }
 
         #endregion
@@ -137,7 +149,12 @@ namespace TP1
             }
         }
 
+        public bool Infetado
+        {
+            set { infetado = true;  }
+        }
 
+      
 
 
         #endregion
@@ -145,38 +162,9 @@ namespace TP1
 
         #region Metodos_da_classe
 
-        /// <summary>
-        /// Função que verifica se uma pessoa já está inserida
-        /// Se existir, devolve a informação da pessoa e pergunta se pretende alterar
-        /// </summary>
-        /// <param nome="nome"></param>
-        /// <returns></returns>
-        public static bool VerificaPessoa(string nome)
-        {
+       
 
-            return true;
-        }
-
-        /// <summary>
-        /// Regista nova pessoa
-        /// </summary>
-        /// <returns></returns>
-        public static int InserePessoa(Pessoa p)
-        {
-
-            return 0;
-        }
-
-
-        /// <summary>
-        /// Consultar informação 
-        /// </summary>
-        /// <returns></returns>
-        public static int Consultar(Pessoa p)
-        {
-
-            return 0;
-        }
+       
 
         #endregion
 
