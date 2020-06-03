@@ -17,7 +17,6 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using BO;
 
@@ -34,7 +33,7 @@ namespace DL
         //Lista de utentes (privada)
         private static List<Utente> listaUtentes;           //Lista que guarda os utentes infetados
         private static List<Utente> historicoUtentes;       //Lista que guarda os utentes que foram registados previamente e já não estão infetados
-        private static List<Utente> listaAuxiliar;
+        private static List<Utente> listaAuxiliar;          //Lista Auxiliar que é reutilizada por vários métodos
 
         private const string file1 = "ListaUtentes.dat";
         private const string file2 = "HistoricoUtentes.dat";
@@ -60,7 +59,6 @@ namespace DL
         }
 
         #endregion
-
 
         #region Metodos_Da_Classe
 
@@ -114,7 +112,7 @@ namespace DL
         /// Caso o utente já estiver inserido na lista irá retornar false.
         /// Caso o utente tenha sido adicionado com sucesso é retornado true;
         /// </summary>
-        /// <param name="p"></param>
+        /// <param name="u">utente do tipo Utente</param>
         public static bool InsertPatient(Utente u)
         {
             //Caso o utente já tenha sido inserido
@@ -166,9 +164,7 @@ namespace DL
         /// Função que
         /// </summary>
         /// <param name="p"></param>
-        /// <returns>0- se a lista estiver nula
-        ///          1- Caso o cliente tenha sido removido da lista de infetados com sucesso
-        ///          2- Se o id inserido não estiver inserido na lista</returns>
+        /// <returns>Retorna a listaAuxiiliar mesmo que esteja nula</returns>
         public static List<Utente> SearchPatient(int nif)
         {
             listaAuxiliar.Clear();
@@ -191,9 +187,16 @@ namespace DL
         /// <param name="idade">idade do utente</param>
         /// <param name="nif">nif do utente</param>
         /// <param name="regiao">regiao do utente</param>
-        /// <param name="sexo">sexo do utente</param>
+        /// <param name="f"></param>
+        /// <param name="m"></param>
         /// <param name="numU">numero de utente</param>
-        /// <returns></returns>
+        /// <returns
+        /// 0- Caso nenhum campo tenha sido preenchido
+        /// 1- Caso a idade não seja válida
+        /// 2- Caso o número de dígitos do nif não esteja correto
+        /// 3- Caso o nif inserido já esteja registado noutro utente
+        /// 4- Caso o utente tenha sido editado com sucesso
+        /// ></returns>
         public static int EditInformation(string nome, string idade, string nif, string regiao, bool f, bool m, int numU)
         {
             //Caso nenhuma textBox tenha sido preenchida dá return a 0
@@ -267,16 +270,16 @@ namespace DL
                     {
                         ut.Feminino = false;
                     }
-                    
 
+
+                    Save(file1);
+                    SaveHistoricP(file2);
                     return 4;
-
-                }
+                } 
+               
             }
-
-
-            Save(file1);
-            SaveHistoricP(file2);
+           
+            //Caso o número de utente inserido não exista
             return 5;
         }
 
@@ -284,9 +287,10 @@ namespace DL
         /// Esta função irá receber o número de utente que já tenha sido registado mas já não está infetado
         /// </summary>
         /// <param name="numU"></param>
-        /// <returns>0-> caso a lista esteja vazia
-        ///          1- caso o número de utente inserido não esteja registado
-        ///          2- caso o utente tenha sido alterado ocm sucesso</returns>
+        /// <returns>
+        /// 0-> caso a lista esteja vazia
+        /// 1- caso o número de utente inserido não esteja registado
+        /// 2- caso o utente tenha sido alterado com sucesso</returns>
         public static int EditPatient2(int numU)
         {
             if (historicoUtentes.Count == 0)
@@ -342,13 +346,13 @@ namespace DL
             return 2;
         }
 
-        
+
 
         /// <summary>
         /// Função que, a partir da idade inserida pelo utilizador, insere todos os utentes com essa mesma idade numa lista auxiliar para que seja possivel mostrar
         /// </summary>
         /// <param name="idade"></param>
-        /// <returns></returns>
+        /// <returns> listaAuxiliar </returns>
         public static List<Utente> ConsultAges(int idade)
         {
             listaAuxiliar.Clear();
@@ -430,7 +434,7 @@ namespace DL
         /// <summary>
         /// Função que retorna a lista do historico de utentes (onde estão inseridos todos os utentes que já não estão infetados)
         /// </summary>
-        /// <returns>listaUtentes</returns>
+        /// <returns> lista historicoUtentes</returns>
         public static List<Utente> ListHistoric()
         {
             return historicoUtentes;
@@ -489,7 +493,7 @@ namespace DL
 
 
         /// <summary>
-        /// Guarda os dados binários no ficheiro
+        /// Guarda os dados da listaUtentes binários no ficheiro
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns></returns>
@@ -512,7 +516,7 @@ namespace DL
         }
 
         /// <summary>
-        /// Guarda os dados binários no ficheiro
+        /// Guarda os dados da lista historicoUtentes binários no ficheiro
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns></returns>
@@ -535,7 +539,7 @@ namespace DL
         }
 
         /// <summary>
-        /// Carrega os dados
+        /// Carrega os dados da listaUtentes
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns></returns>
@@ -558,7 +562,7 @@ namespace DL
         }
 
         /// <summary>
-        /// Carrega os dados d
+        /// Carrega os dados da lista historicoUtentes
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns></returns>

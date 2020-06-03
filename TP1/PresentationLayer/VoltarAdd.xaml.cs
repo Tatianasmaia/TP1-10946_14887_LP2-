@@ -17,6 +17,7 @@ namespace PresentationLayer
 
         private void bt_VoltarAdd_Click(object sender, RoutedEventArgs e)
         {
+            //Declaração de variáveis
             int num;
 
             if (string.IsNullOrEmpty(tb_num.Text))
@@ -38,6 +39,7 @@ namespace PresentationLayer
 
             int aux = Rules.EditPatient2(num);
 
+            //Verificação do return 
             if (aux == 0)
             {
                 MessageBox.Show("Não existe nenhum utente registado!");

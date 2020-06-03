@@ -10,17 +10,13 @@
  * ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
  * 
  * Camada: Regras de Negócio
- * Camada que consegue aceder aos métodos da camada de dados (DataLayer)
+ * Camada que consegue aceder aos métodos da camada de dados (DataLayer) e fazer a ligação com a camada de apresentação
  * 
  */
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DL;
 using BO;
+using DL;
+using System.Collections.Generic;
 
 namespace BR
 {
