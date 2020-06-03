@@ -1,19 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using BR;
+using System;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using BO;
-using BR;
 
 namespace PresentationLayer
 {
@@ -48,7 +36,7 @@ namespace PresentationLayer
             }
             
 
-            int aux = Rules.EditaUtente2(num);
+            int aux = Rules.EditPatient2(num);
 
             if (aux == 0)
             {
@@ -64,19 +52,9 @@ namespace PresentationLayer
                 MessageBox.Show("Utente Adicionado com sucesso aos utentes infetados!");
             }
 
-            //Sempre que há alterações nas listas temos que atualizar os ficheiros
-            Rules.Save("listaUtentes");
-            //Dar Clear
-            Rules.Load("listaUtentes");
-
-            Rules.SaveHistoricoU("historicoUtentes");
-            //Dar Clear
-            Rules.LoadHistoricoU("historicoUtentes");
-
             //Voltar ao menu
             Menu expenseReportPage = new Menu();
             this.NavigationService.Navigate(expenseReportPage);
-
         }
     }
 }

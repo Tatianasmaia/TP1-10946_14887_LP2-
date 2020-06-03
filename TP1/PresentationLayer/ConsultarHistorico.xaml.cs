@@ -1,48 +1,43 @@
-﻿using System;
+﻿using BO;
+using BR;
 using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using BO;
-using BR;
 
 namespace PresentationLayer
 {
     /// <summary>
-    /// Interaction logic for ConsultarIdades.xaml
+    /// Interaction logic for ConsultarHistorico.xaml
     /// </summary>
-    public partial class ConsultarIdades : Page
+    public partial class ConsultarHistorico : Page
     {
-        public ConsultarIdades()
+        public ConsultarHistorico()
         {
             InitializeComponent();
         }
 
+      
         /// <summary>
-        /// Botão consultar utentes através da idade introduzida pelo utilizador
+        /// Botão para consultar a lista do historico de utentes
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void bt_Consultar_Click(object sender, RoutedEventArgs e)
+        private void Consultar_Click(object sender, RoutedEventArgs e)
         {
             List<Utente> listaAuxiliar = new List<Utente>();
 
-            int idade = Int32.Parse(tb_Idade.Text);
-
-            listaAuxiliar = Rules.ConsultAges(idade);
-
+            listaAuxiliar = Rules.ListHistoric();
 
             if (listaAuxiliar.Count == 0)
             {
-                MessageBox.Show("Nao existe nenhum utente com a idade que inseriu!");
+                MessageBox.Show("Nao existe nenhum utente no historico!");
                 Menu expenseReportPage = new Menu();
                 this.NavigationService.Navigate(expenseReportPage);
             }
             else
             {
-                dataGridIdades.ItemsSource = listaAuxiliar;
+                dataGridHistorico.ItemsSource = listaAuxiliar;
             }
-
         }
-
     }
 }

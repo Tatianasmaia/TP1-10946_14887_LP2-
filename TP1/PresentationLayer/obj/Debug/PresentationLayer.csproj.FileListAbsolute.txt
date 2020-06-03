@@ -37,3 +37,7 @@ C:\Users\utilizador\Desktop\TP1\PresentationLayer\obj\Debug\ConsultarIdades.baml
 C:\Users\utilizador\Desktop\TP1\PresentationLayer\obj\Debug\ConsultarUtente.baml
 C:\Users\utilizador\Desktop\TP1\PresentationLayer\obj\Debug\ConsultarRegiao.g.cs
 C:\Users\utilizador\Desktop\TP1\PresentationLayer\obj\Debug\ConsultarRegiao.baml
+C:\Users\utilizador\Desktop\TP1\PresentationLayer\obj\Debug\ConsultarHistorico.g.cs
+C:\Users\utilizador\Desktop\TP1\PresentationLayer\obj\Debug\ConsultarInfetados.g.cs
+C:\Users\utilizador\Desktop\TP1\PresentationLayer\obj\Debug\ConsultarHistorico.baml
+C:\Users\utilizador\Desktop\TP1\PresentationLayer\obj\Debug\ConsultarInfetados.baml

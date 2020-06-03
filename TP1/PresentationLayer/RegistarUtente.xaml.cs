@@ -1,17 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using BO;
 using BR;
 
@@ -43,8 +32,8 @@ namespace PresentationLayer
                 MessageBox.Show("Não pode deixar espacos em branco!");
 
                 //Código para parar esta page e voltar ao menu  ?
-                //Menu expenseReportPage = new Menu();
-                //this.NavigationService.Navigate(expenseReportPage);
+                Menu menu = new Menu();
+                this.NavigationService.Navigate(menu);
 
             }
 
@@ -55,24 +44,25 @@ namespace PresentationLayer
             {
                 u.Idade = Int32.Parse(tb_Idade.Text);
             }
-            catch
+            catch(Exception e1)
             {
-                throw new Exception("Cadeia de caracteres inválida!");
+                MessageBox.Show("Cadeia de caracteres inválida!");
             }
 
             try
             {
                 u.Nif = Int32.Parse(tb_Nif.Text);
             }
-            catch
+            catch(Exception e1)
             {
-                throw new Exception("Cadeia de caracteres inválida!");
+                MessageBox.Show("Cadeia de caracteres inválida!");
             }
             
             u.Regiao = tb_Regiao.Text;
             u.Sexo = tb_Sexo.Text;
 
-            aux = Rules.VerificaUtente(u);
+            //Envia o utente auxiliar com a informação que o utilizador inseriu para a função VerifyPatient que verifica se todos os dados inseridos são válidos
+            aux = Rules.VerifyPatient(u);
 
             if (aux == 0)
             {
@@ -98,14 +88,7 @@ namespace PresentationLayer
             //Voltar ao menu
             Menu expenseReportPage = new Menu();
             this.NavigationService.Navigate(expenseReportPage);
-
-            Rules.Save("listaUtentes");
-            //Dar Clear
-            Rules.Load("listaUtentes");
         }
 
-        
-
-      
     }
 }

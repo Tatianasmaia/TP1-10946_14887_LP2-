@@ -6,8 +6,12 @@
  * 
  * Este trabalho tem como objetivo gerir pessoas infetadas numa situação de crise de saúde pública. 
  * Deste modo, o sistema irá permitir inserir novos casos, editar e remover casos já existentes, assim como a consulta dos mesmos através dos vários tipos de informação do utente.
- * 
  */
+
+ /*
+  * Camada Business Objects
+  * Esta camada possui as classes
+  */
 
 
 

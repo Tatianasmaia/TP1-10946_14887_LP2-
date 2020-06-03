@@ -70,6 +70,50 @@ namespace PresentationLayer
         }
 
         /// <summary>
+        /// Botão Consultar Região
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ConsultarRegiao_Click(object sender, RoutedEventArgs e)
+        {
+            ConsultarRegiao expenseReportPage = new ConsultarRegiao();
+            this.NavigationService.Navigate(expenseReportPage);
+        }
+
+        /// <summary>
+        /// Botão Consultar Sexo
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ConsultarSexo_Click(object sender, RoutedEventArgs e)
+        {
+            //    ConsultarSexo expenseReportPage = new ConsultarSexo();
+            //    this.NavigationService.Navigate(expenseReportPage);
+        }
+
+        /// <summary>
+        /// Botão Consultar Utentes Infetados
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ConsultarInfetados_Click(object sender, RoutedEventArgs e)
+        {
+            ConsultarInfetados expenseReportPage = new ConsultarInfetados();
+            this.NavigationService.Navigate(expenseReportPage);
+        }
+
+        /// <summary>
+        /// Botão consultar Historico de utentes
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ConsultarHistorico_Click(object sender, RoutedEventArgs e)
+        {
+            ConsultarHistorico expenseReportPage = new ConsultarHistorico();
+            this.NavigationService.Navigate(expenseReportPage);
+        }
+        
+        /// <summary>
         /// Botão Sair
         /// </summary>
         /// <param name="sender"></param>
@@ -79,10 +123,5 @@ namespace PresentationLayer
             System.Windows.Application.Current.Shutdown();
         }
 
-        private void ConsultarRegiao_Click(object sender, RoutedEventArgs e)
-        {
-            ConsultarRegiao expenseReportPage = new ConsultarRegiao();
-            this.NavigationService.Navigate(expenseReportPage);
-        }
     }
 }

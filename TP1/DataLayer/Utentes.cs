@@ -36,6 +36,9 @@ namespace DL
         private static List<Utente> historicoUtentes;       //Lista que guarda os utentes que foram registados previamente e já não estão infetados
         private static List<Utente> listaAuxiliar;
 
+        private const string DATAFILE = "ListaUtentes.dat";
+        private const string DATAFILE2 = "HistoricoUtentes.dat";
+
         #endregion
 
         #region Construtores
@@ -46,10 +49,14 @@ namespace DL
         /// </summary>
         static Utentes()
         {
-
+            
             listaUtentes = new List<Utente>();
             historicoUtentes = new List<Utente>();
             listaAuxiliar = new List<Utente>();
+
+            //Load(DATAFILE);
+            //LoadHistoricoU(DATAFILE2);
+            
         }
 
         #endregion
@@ -67,13 +74,13 @@ namespace DL
         /// 2- Caso o nif inserido já esteja registado
         /// 3- Caso o sexo inserido não seja válido
         /// 4- Caso o utente tenha sido adicionado à lista com sucesso</returns>
-        public static int VerificaUtente(Utente u)
+        public static int VerifyPatient(Utente u)
         {
             bool aux;
 
 
             //Verificação da idade
-            while (u.Idade < 0 || u.Idade > 110)
+            if (u.Idade < 0 || u.Idade > 110)
             {
                 return 0;
             }
@@ -100,11 +107,11 @@ namespace DL
             }
 
             //Verifica o sexo
-            //while (u.Sexo != "feminino" || u.Sexo != "masculino")
-            //{
-            //    return 3;
+            if (u.Sexo != "feminino" && u.Sexo != "masculino")
+            {
+                return 3;
 
-            //}
+            }
 
             InsereUtente(u);
             return 4;
@@ -116,14 +123,16 @@ namespace DL
         /// Caso o utente tenha sido adicionado com sucesso é retornado true;
         /// </summary>
         /// <param name="p"></param>
-        public static bool InsereUtente(Utente u)
+        public static bool InsertPatient(Utente u)
         {
             //Caso o utente já tenha sido inserido
             if (listaUtentes.Contains(u)) return false;
 
             //Caso seja possível adicionar o utente à lista
-            //numUtente++;
             listaUtentes.Add(u);
+
+            //Save(DATAFILE);
+
             return true;
         }
 
@@ -135,7 +144,7 @@ namespace DL
         /// <returns>0- se a lista estiver nula
         ///          1- Caso o cliente tenha sido removido da lista de infetados com sucesso
         ///          2- Se o id inserido não estiver inserido na lista</returns>
-        public static int RemoveUtente(int num)
+        public static int RemovePatient(int num)
         {
             if (listaUtentes.Count == 0)
             {
@@ -155,6 +164,8 @@ namespace DL
                 }
             }
 
+            //Save(DATAFILE);
+
             return 1;
         }
 
@@ -165,7 +176,7 @@ namespace DL
         /// <returns>0- se a lista estiver nula
         ///          1- Caso o cliente tenha sido removido da lista de infetados com sucesso
         ///          2- Se o id inserido não estiver inserido na lista</returns>
-        public static Utente PesquisaUtente(int nif)
+        public static Utente SearchPatient(int nif)
         {
            
             foreach (Utente ut in listaUtentes)
@@ -189,7 +200,7 @@ namespace DL
         /// <param name="sexo">sexo do utente</param>
         /// <param name="numU">numero de utente</param>
         /// <returns></returns>
-        public static int EditarInformacao(string nome, string idade, string nif, string regiao, string sexo, int numU)
+        public static int EditInformation(string nome, string idade, string nif, string regiao, string sexo, int numU)
         {
             //Caso nenhuma textBox tenha sido preenchida dá return a 0
             if (string.IsNullOrWhiteSpace(nome) && string.IsNullOrWhiteSpace(idade) && string.IsNullOrWhiteSpace(nif) && string.IsNullOrWhiteSpace(regiao) && string.IsNullOrWhiteSpace(sexo)) return 0;
@@ -262,8 +273,8 @@ namespace DL
 
                 }
             }
-           
 
+            //Save(DATAFILE);
             return 5;
         }
 
@@ -274,7 +285,7 @@ namespace DL
         /// <returns>0-> caso a lista esteja vazia
         ///          1- caso o número de utente inserido não esteja registado
         ///          2- caso o utente tenha sido alterado ocm sucesso</returns>
-        public static int EditaUtente2(int numU)
+        public static int EditPatient2(int numU)
         {
             if (historicoUtentes.Count == 0)
             {
@@ -293,8 +304,9 @@ namespace DL
                     }
                 }
             }
-            
 
+            //Save(DATAFILE);
+            //Save(DATAFILE2);
             return 1;
         }
 
@@ -306,7 +318,7 @@ namespace DL
         /// 0-> Caso o nif não tenha o número de digitos correto
         /// 1-> Caso o nif já tenha sido registado por outro utente
         /// 2-> Caso o nif possa ser adicionado com sucesso</returns>
-        public static int VerificaNif(int nif)
+        public static int VerifyNif(int nif)
         {
             bool aux = VerificaDigitos(nif);
 
@@ -335,7 +347,7 @@ namespace DL
         /// </summary>
         /// <param name="idade"></param>
         /// <returns></returns>
-        public static List<Utente> ConsultaIdades(int idade)
+        public static List<Utente> ConsultAges(int idade)
         {
             listaAuxiliar.Clear();
 
@@ -355,7 +367,7 @@ namespace DL
         /// </summary>
         /// <param name="regiao"></param>
         /// <returns>Dá return á lista auxiliar (mesmo que seja nula)</returns>
-        public static List<Utente> ConsultaRegiao(string regiao)
+        public static List<Utente> ConsultRegion(string regiao)
         {
             listaAuxiliar.Clear();
 
@@ -375,7 +387,7 @@ namespace DL
         /// </summary>
         /// <param name="sexo"></param>
         /// <returns>Retorna a listaAuxiliar</returns>
-        public static List<Utente> ConsultaSexo(string sexo)
+        public static List<Utente> ConsultGender(string sexo)
         {
             listaAuxiliar.Clear();
 
@@ -394,7 +406,7 @@ namespace DL
         /// Função que mostra a lista de utentes (onde estão inseridos todos os utentes infetados)
         /// </summary>
         /// <returns>listaUtentes</returns>
-        public static List<Utente> ListarInfetados()
+        public static List<Utente> ListInfected()
         {
             return listaUtentes;
         }
@@ -403,7 +415,7 @@ namespace DL
         /// Função que retorna a lista do historico de utentes (onde estão inseridos todos os utentes que já não estão infetados)
         /// </summary>
         /// <returns>listaUtentes</returns>
-        public static List<Utente> ListarHistorico()
+        public static List<Utente> ListHistoric()
         {
             return historicoUtentes;
         }
@@ -418,7 +430,7 @@ namespace DL
         /// <returns>
         /// false-> Caso o nif não tenha o número de digitos correto
         /// true-> Caso o nif tenha os 9 digitos</returns>
-        public static bool VerificaDigitos(int nif)
+        public static bool VerifyDigits(int nif)
         {        
             int  count = 0;
             
@@ -443,7 +455,7 @@ namespace DL
         /// <returns>
         /// false-> Se a idade não for válida
         /// true-> Se a idade for válida</returns>
-        public static bool VerificaIdade(int idade)
+        public static bool VerifyAge(int idade)
         {
             if (idade < 0 || idade > 110)
             {
@@ -488,7 +500,7 @@ namespace DL
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns></returns>
-        public static bool SaveHistoricoU(string fileName)
+        public static bool SaveHistoricP(string fileName)
         {
             try
             {
@@ -534,7 +546,7 @@ namespace DL
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns></returns>
-        public static bool LoadHistoricoU(string fileName)
+        public static bool LoadHistoricP(string fileName)
         {
             try
             {

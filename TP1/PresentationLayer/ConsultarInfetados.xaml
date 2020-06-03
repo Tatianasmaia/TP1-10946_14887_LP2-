@@ -1,0 +1,27 @@
+﻿<Page x:Class="PresentationLayer.ConsultarInfetados"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PresentationLayer"
+      mc:Ignorable="d"
+      Title="ConsultarInfetados" Height="506.95" Width="987.2">
+
+    <Grid Margin="0,0,0,10">
+        <TextBlock HorizontalAlignment="Left" Margin="381,10,0,0" TextWrapping="Wrap" Text="Consultar Infetados" VerticalAlignment="Top" FontSize="22" Height="45" Width="212"/>
+        <Button Name="Consultar" Content="Consultar" HorizontalAlignment="Left" Margin="424,55,0,0" VerticalAlignment="Top" Width="98" Height="32" Click="Consultar_Click"/>
+        <DataGrid Name="dataGridInfetados" HorizontalAlignment="Left" Height="286" Margin="108,125,0,0" VerticalAlignment="Top" Width="736" AutoGenerateColumns="False" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding NumUtente}" Header="Numero Utente"/>
+                <DataGridTextColumn Binding="{Binding Nome}" Header="Nome"/>
+                <DataGridTextColumn Binding="{Binding Nif}" Header="Nif"/>
+                <DataGridTextColumn Binding="{Binding Idade}" Header="Idade"/>
+                <DataGridTextColumn Binding="{Binding Regiao}" Header="Regiao"/>
+                <DataGridTextColumn Binding="{Binding Sexo}" Header="Sexo"/>
+
+            </DataGrid.Columns>
+
+        </DataGrid>
+
+    </Grid>
+</Page>

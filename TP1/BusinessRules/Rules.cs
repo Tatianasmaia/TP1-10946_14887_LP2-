@@ -32,9 +32,9 @@ namespace BR
         /// <param name="u">utente</param>
         /// <returns>false-> Caso o utente já tenha sido inserido
         ///           true-> Caso o utente tenha sido inserido com sucesso</returns>
-        public static bool InsereUtente(Utente u)
+        public static bool InsertPatient(Utente u)
         {
-            return Utentes.InsereUtente(u);
+            return Utentes.InsertPatient(u);
         }
 
         /// <summary>
@@ -42,9 +42,11 @@ namespace BR
         /// </summary>
         /// <param name="u"></param>
         /// <returns></returns>
-        public static int VerificaUtente(Utente u)
+        public static int VerifyPatient(Utente u)
         {
-            return Utentes.VerificaUtente(u);
+            
+            return Utentes.VerifyPatient(u);
+            
         }
 
         /// <summary>
@@ -54,9 +56,9 @@ namespace BR
         /// <returns>0- se a lista estiver nula
         ///          1- Caso o cliente tenha sido removido da lista de infetados com sucesso
         ///          2- Se o id inserido não estiver inserido na lista</returns>
-        public static int RemoveUtente(int num)
+        public static int RemovePatient(int num)
         {
-            return Utentes.RemoveUtente(num);
+            return Utentes.RemovePatient(num);
         }
 
         /// <summary>
@@ -65,14 +67,14 @@ namespace BR
         /// <param name="nif">nif do utente a pesquisar</param>
         /// <returns>false-> Caso o utente já tenha sido inserido
         ///           true-> Caso o utente tenha sido inserido com sucesso</returns>
-        public static Utente PesquisaUtente(int nif)
+        public static Utente SearchPatient(int nif)
         {
-            return Utentes.PesquisaUtente(nif);
+            return Utentes.SearchPatient(nif);
         }
 
-        public static int EditarInformacao(string nome, string idade, string nif, string regiao, string sexo, int numU)
+        public static int EditInformation(string nome, string idade, string nif, string regiao, string sexo, int numU)
         {
-            return Utentes.EditarInformacao(nome, idade, nif, regiao, sexo, numU);
+            return Utentes.EditInformation(nome, idade, nif, regiao, sexo, numU);
         }
 
         /// <summary>
@@ -80,9 +82,9 @@ namespace BR
         /// </summary>
         /// <param name="numU"></param>
         /// <returns></returns>
-        public static int EditaUtente2(int numU)
+        public static int EditPatient2(int numU)
         {
-            return Utentes.EditaUtente2(numU);
+            return Utentes.EditPatient2(numU);
         }
 
         /// <summary>
@@ -90,9 +92,9 @@ namespace BR
         /// </summary>
         /// <param name="nif"></param>
         /// <returns></returns>
-        public static bool VerificaDigitos(int nif)
+        public static bool VerifyDigits(int nif)
         {
-            return Utentes.VerificaDigitos(nif);
+            return Utentes.VerifyDigits(nif);
         }
 
         /// <summary>
@@ -100,9 +102,9 @@ namespace BR
         /// </summary>
         /// <param name="nif"></param>
         /// <returns></returns>
-        public static int VerificaNif(int nif)
+        public static int VerifyNif(int nif)
         {
-            return Utentes.VerificaNif(nif);
+            return Utentes.VerifyNif(nif);
         }
 
         /// <summary>
@@ -110,9 +112,9 @@ namespace BR
         /// </summary>
         /// <param name="idade"></param>
         /// <returns></returns>
-        public static List<Utente> ConsultaIdades(int idade)
+        public static List<Utente> ConsultAges(int idade)
         {
-            return Utentes.ConsultaIdades(idade);
+            return Utentes.ConsultAges(idade);
         }
 
         /// <summary>
@@ -120,9 +122,9 @@ namespace BR
         /// </summary>
         /// <param name="regiao"></param>
         /// <returns></returns>
-        public static List<Utente> ConsultaRegiao(string regiao)
+        public static List<Utente> ConsultRegion(string regiao)
         {
-            return Utentes.ConsultaRegiao(regiao);
+            return Utentes.ConsultRegion(regiao);
         }
 
         /// <summary>
@@ -130,27 +132,27 @@ namespace BR
         /// </summary>
         /// <param name="sexo"></param>
         /// <returns></returns>
-        public static List<Utente> ConsultaSexo(string sexo)
+        public static List<Utente> ConsultGender(string sexo)
         {
-            return Utentes.ConsultaSexo(sexo);
+            return Utentes.ConsultGender(sexo);
         }
 
         /// <summary>
         /// Função que lista a lista de infetados
         /// </summary>
         /// <returns></returns>
-        public static List<Utente> ListarInfetados()
+        public static List<Utente> ListInfected()
         {
-            return Utentes.ListarInfetados();
+            return Utentes.ListInfected();
         }
 
         /// <summary>
         /// Função que lista o historico de utentes
         /// </summary>
         /// <returns></returns>
-        public static List<Utente> ListarHistorico()
+        public static List<Utente> ListHistoric()
         {
-            return Utentes.ListarHistorico();
+            return Utentes.ListHistoric();
         }
 
         //FALTA EXCEPTIONS
@@ -169,7 +171,7 @@ namespace BR
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns></returns>
-        public static bool SaveHistoricoU(string fileName)
+        public static bool SaveHistoricP(string fileName)
         {
             return Utentes.Save(fileName);
         }
@@ -189,7 +191,7 @@ namespace BR
         /// </summary>
         /// <param name="fileName"></param>
         /// <returns></returns>
-        public static bool LoadHistoricoU(string fileName)
+        public static bool LoadHistoricP(string fileName)
         {
             return Utentes.Load(fileName);
         }

@@ -55,8 +55,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="ConsultarHistorico.xaml.cs">
+      <DependentUpon>ConsultarHistorico.xaml</DependentUpon>
+    </Compile>
     <Compile Include="ConsultarIdades.xaml.cs">
       <DependentUpon>ConsultarIdades.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ConsultarInfetados.xaml.cs">
+      <DependentUpon>ConsultarInfetados.xaml</DependentUpon>
     </Compile>
     <Compile Include="ConsultarRegiao.xaml.cs">
       <DependentUpon>ConsultarRegiao.xaml</DependentUpon>
@@ -79,7 +85,15 @@
     <Compile Include="VoltarAdd.xaml.cs">
       <DependentUpon>VoltarAdd.xaml</DependentUpon>
     </Compile>
+    <Page Include="ConsultarHistorico.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="ConsultarIdades.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ConsultarInfetados.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

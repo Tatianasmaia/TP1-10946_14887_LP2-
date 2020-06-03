@@ -1,17 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using BO;
 using BR;
 
@@ -33,7 +22,7 @@ namespace PresentationLayer
 
             string regiao = tb_Regiao.Text;
 
-            listaAuxiliar = Rules.ConsultaRegiao(regiao);
+            listaAuxiliar = Rules.ConsultRegion(regiao);
 
 
             if (listaAuxiliar.Count == 0)
@@ -44,7 +33,7 @@ namespace PresentationLayer
             }
             else
             {
-                //dataGridRegiao.ItemsSource = listaAuxiliar;
+                dataGridRegiao.ItemsSource = listaAuxiliar;
 
             }
         }

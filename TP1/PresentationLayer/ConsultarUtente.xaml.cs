@@ -12,6 +12,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using BO;
+using BR;
 
 namespace PresentationLayer
 {
@@ -23,6 +25,25 @@ namespace PresentationLayer
         public ConsultarUtente()
         {
             InitializeComponent();
+        }
+
+        /// <summary>
+        /// Botão Consultar (o utente com o respetivo nif inserido)
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bt_Consultar_Click(object sender, RoutedEventArgs e)
+        {
+            Utente ut = new Utente();
+
+            int nif = Int32.Parse(tb_Nif.Text);
+
+            ut = Rules.SearchPatient(nif);
+
+            if (ut != null)
+            {
+                
+            }
         }
     }
 }

@@ -1,18 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using BO;
 using BR;
 
 namespace PresentationLayer
@@ -42,7 +30,7 @@ namespace PresentationLayer
 
             int numU = Int32.Parse(tb_numU.Text);
 
-            int aux = Rules.EditarInformacao(tb_Nome.Text, tb_Idade.Text, tb_Nif.Text, tb_Regiao.Text, tb_Sexo.Text, numU);
+            int aux = Rules.EditInformation(tb_Nome.Text, tb_Idade.Text, tb_Nif.Text, tb_Regiao.Text, tb_Sexo.Text, numU);
 
             if (aux == 0)
             {
@@ -68,17 +56,6 @@ namespace PresentationLayer
             {
                 MessageBox.Show("O número de utente que inseriu não existe!");
             }
-
-            //Sempre que há alterações na lista temos que atualizar o ficheiro
-            Rules.Save("listaUtentes");
-            //Dar Clear
-            Rules.Load("listaUtentes");
-
         }
-
-        //private void Sair_Click(object sender, RoutedEventArgs e)
-        //{
-
-        //}
     }
 }
