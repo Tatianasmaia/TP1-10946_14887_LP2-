@@ -49,7 +49,9 @@ namespace PresentationLayer
                 dataGridUtente.ItemsSource = listaAuxiliar;
             }
 
-
+            //Voltar ao menu
+            Menu expenseReportPage = new Menu();
+            this.NavigationService.Navigate(expenseReportPage);
         }
     }
 }

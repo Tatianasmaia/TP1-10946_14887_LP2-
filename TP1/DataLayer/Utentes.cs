@@ -177,11 +177,10 @@ namespace DL
                 if (ut.Nif == nif)
                 {
                     listaAuxiliar.Add(ut);
-                    return listaAuxiliar;
+                    
                 }
             }
-
-            return null;
+            return listaAuxiliar;
         }
 
         /// <summary>
@@ -400,7 +399,7 @@ namespace DL
                         listaAuxiliar.Add(u);
                     }
                 }
-                return listaAuxiliar;
+               
             }
             else
             {
@@ -411,8 +410,9 @@ namespace DL
                         listaAuxiliar.Add(u);
                     }
                 }
-                return listaAuxiliar;
+                
             }
+            return listaAuxiliar;
         }
 
         /// <summary>

@@ -65,6 +65,9 @@ namespace PresentationLayer
                 dataGridSexo.ItemsSource = listaAuxiliar;
             }
 
+            //Voltar ao menu
+            Menu expenseReportPage = new Menu();
+            this.NavigationService.Navigate(expenseReportPage);
         }
     }
 }

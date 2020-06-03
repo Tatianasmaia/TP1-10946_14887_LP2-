@@ -48,7 +48,7 @@ namespace BO
             regiao = "";
             idade = -1;
             nif = -1;
-            feminino = true;
+            //feminino = true;
         }
 
         /// <summary>
@@ -66,7 +66,7 @@ namespace BO
             regiao = r;
             idade = i;
             nif = ni;
-            feminino = true;
+            //feminino = true;
         }
 
         #endregion
