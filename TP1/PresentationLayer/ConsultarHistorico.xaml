@@ -8,9 +8,8 @@
       Title="ConsultarHistorico" Height="462.888" Width="846.575">
 
     <Grid>
-        <TextBlock HorizontalAlignment="Left" Margin="226,10,0,0" TextWrapping="Wrap" Text="Consultar Historico" VerticalAlignment="Top" FontSize="22" Height="45" Width="212"/>
-        <Button Name="Consultar" Content="Consultar" HorizontalAlignment="Left" Margin="278,55,0,0" VerticalAlignment="Top" Width="97" Height="32" Click="Consultar_Click"/>
-        <TextBlock HorizontalAlignment="Left" Margin="512,15,0,0" TextWrapping="Wrap" Text="Numero de Utentes no Historico" VerticalAlignment="Top" FontSize="17" Height="29" Width="255"/>
+        <TextBlock HorizontalAlignment="Left" Margin="289,10,0,0" TextWrapping="Wrap" Text="Consultar Historico" VerticalAlignment="Top" FontSize="22" Height="45" Width="212"/>
+        <Button Name="Consultar" Content="Consultar" HorizontalAlignment="Left" Margin="336,55,0,0" VerticalAlignment="Top" Width="97" Height="32" Click="Consultar_Click"/>
         <DataGrid Name="dataGridHistorico" HorizontalAlignment="Left" Height="325" Margin="38,112,0,0" VerticalAlignment="Top" Width="625" AutoGenerateColumns="False">
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding NumUtente}" Header="Numero Utente"/>

@@ -36,8 +36,8 @@ namespace DL
         private static List<Utente> historicoUtentes;       //Lista que guarda os utentes que foram registados previamente e já não estão infetados
         private static List<Utente> listaAuxiliar;
 
-        private const string DATAFILE = "ListaUtentes.dat";
-        private const string DATAFILE2 = "HistoricoUtentes.dat";
+        private const string file1 = "ListaUtentes.dat";
+        private const string file2 = "HistoricoUtentes.dat";
 
         #endregion
 
@@ -54,9 +54,9 @@ namespace DL
             historicoUtentes = new List<Utente>();
             listaAuxiliar = new List<Utente>();
 
-            //Load(DATAFILE);
-            //LoadHistoricoU(DATAFILE2);
-            
+            Load(file1);
+            //LoadHistoricP(file2);
+
         }
 
         #endregion
@@ -123,7 +123,7 @@ namespace DL
             //Caso seja possível adicionar o utente à lista
             listaUtentes.Add(u);
 
-            //Save(DATAFILE);
+            Save(file1);
 
             return true;
         }
@@ -156,7 +156,8 @@ namespace DL
                 }
             }
 
-            //Save(DATAFILE);
+            Save(file1);
+            SaveHistoricP(file2);
 
             return 1;
         }
@@ -273,7 +274,9 @@ namespace DL
                 }
             }
 
-            //Save(DATAFILE);
+
+            Save(file1);
+            SaveHistoricP(file2);
             return 5;
         }
 
@@ -304,8 +307,8 @@ namespace DL
                 }
             }
 
-            //Save(DATAFILE);
-            //Save(DATAFILE2);
+            Save(file1);
+            SaveHistoricP(file2);
             return 1;
         }
 
